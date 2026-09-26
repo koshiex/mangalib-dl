@@ -1,0 +1,5 @@
+/downloads/
+/mangalib-dl
+*.part
+.DS_Store
+coverage.out

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MangaLib Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#">MangaLib&nbsp;DL</a>
+    <form id="search-form" class="search" autocomplete="off">
+      <input id="search-input" type="search" placeholder="Название или ссылка на mangalib.me" maxlength="200" required>
+      <button type="submit">Найти</button>
+    </form>
+  </header>
+
+  <main class="layout">
+    <section class="content">
+      <div id="status" class="status" hidden></div>
+
+      <div id="results-view">
+        <div id="results" class="grid"></div>
+        <div class="more"><button id="more" type="button" hidden>Ещё результаты</button></div>
+      </div>
+
+      <div id="manga-view" hidden>
+        <button id="back" class="link" type="button">← к результатам</button>
+        <div class="manga-head">
+          <img id="m-cover" class="cover" alt="">
+          <div class="manga-info">
+            <h2 id="m-title"></h2>
+            <p id="m-alt" class="muted"></p>
+            <p id="m-meta" class="meta"></p>
+            <p id="m-people" class="meta"></p>
+            <p id="m-genres" class="tags"></p>
+            <details>
+              <summary>Описание</summary>
+              <p id="m-summary" class="summary"></p>
+            </details>
+            <a id="m-link" target="_blank" rel="noopener noreferrer">Открыть на MangaLib ↗</a>
+          </div>
+        </div>
+
+        <div class="controls">
+          <label>Перевод
+            <select id="opt-branch"></select>
+          </label>
+          <label>Архивы
+            <select id="opt-mode">
+              <option value="volume">по томам</option>
+              <option value="chapter">по главам</option>
+              <option value="single">одним файлом</option>
+            </select>
+          </label>
+          <label>Формат
+            <select id="opt-format">
+              <option value="zip">.zip</option>
+              <option value="cbz">.cbz</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="selection-bar">
+          <button id="sel-all" type="button">Выбрать все</button>
+          <button id="sel-none" type="button">Снять выбор</button>
+          <span id="sel-count" class="muted"></span>
+          <span class="hint muted">Shift+клик выделяет диапазон</span>
+          <button id="download" class="primary" type="button">Скачать</button>
+        </div>
+
+        <div id="chapters" class="chapters"></div>
+      </div>
+    </section>
+
+    <aside class="jobs">
+      <h2>Загрузки</h2>
+      <div id="jobs-list"></div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
